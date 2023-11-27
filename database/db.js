@@ -32,11 +32,11 @@ const connection = mysql.createConnection({
         const stmt = 'INSERT INTO Pokemon (PokemonID, Type, Basic, Breedable, Sprite) VALUES (?, ?, ?, ?, ?)';
   
         for (const pokemon of pokemonList) {
-          const { id, name, Basic, Unbreedable, sprite } = pokemon;
+          const { id, name, Basic, Unbreedable, spriteblob } = pokemon;
           const basicInt = Basic ? 1 : 0;
           const breedableInt = Unbreedable ? 0 : 1;
             
-          await conn.execute(stmt, [id, name, basicInt, breedableInt, sprite]);
+          await conn.execute(stmt, [id, name, basicInt, breedableInt, {set: spriteblob}]);
         }
   
         await conn.commit();

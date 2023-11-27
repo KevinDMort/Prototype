@@ -95,7 +95,7 @@ async function findBreedableBasic(pokemonList) {
   
               return {
                 ...pokemon,
-                sprite: URL.createObjectURL(blob) // Store blob URL
+                spriteblob: blob // Store blob URL
               };
             } else {
               return pokemon;
