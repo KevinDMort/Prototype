@@ -7,7 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 
-const { database, savePokemonToDatabase,getPokemonImageFromDB } = require('./database/db');
+
 
 var app = express();
 
@@ -119,12 +119,12 @@ async function findBreedableBasic(pokemonList) {
       const pokemonList = await fetchPokemonFromLists();
       const processedPokemonList = await findBreedableBasic(pokemonList);
       const pokeListWithBlobs = await getSprites(processedPokemonList);
-      //console.log(pokeListWithBlobs);
-      savePokemonToDatabase(pokeListWithBlobs)
+      console.log(pokeListWithBlobs);
+      /*savePokemonToDatabase(pokeListWithBlobs)
       .then(() => {
         console.log('Pokémon data saved successfully!');
       })
-    
+      */
     } catch (error) {
       console.error('An error occurred:', error);
     }
